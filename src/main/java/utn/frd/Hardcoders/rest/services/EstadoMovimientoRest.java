@@ -11,35 +11,35 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import utn.frd.Hardcoders.entities.Cliente;
-import utn.frd.Hardcoders.sessions.ClienteFacade;
+import utn.frd.Hardcoders.entities.EstadoMovimiento;
+import utn.frd.Hardcoders.sessions.EstadoMovimientoFacade;
 
-@Path("/cliente")
-public class ClienteRest {
+@Path("/estadoMovimiento")
+public class EstadoMovimientoRest {
 
     @EJB
-    private ClienteFacade ejbClienteFacade;
+    private EstadoMovimientoFacade ejbEstadoMovimientoFacade;
 
     //obtener todas las entidades
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    public List<Cliente> findAll() {
-        return ejbClienteFacade.findAll();
+    public List<EstadoMovimiento> findAll() {
+        return ejbEstadoMovimientoFacade.findAll();
     }
 
     //crear entidades
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
-    public void create(Cliente cliente) {
-        ejbClienteFacade.create(cliente);
+    public void create(EstadoMovimiento estadoMovimiento) {
+        ejbEstadoMovimientoFacade.create(estadoMovimiento);
     }
 
     //actualizar entidades
     @PUT
     @Consumes({MediaType.APPLICATION_JSON})
     @Path("/{id}")
-    public void edit(@PathParam("id") long id, Cliente cliente) {
-        ejbClienteFacade.edit(cliente);
+    public void edit(@PathParam("id") long id, EstadoMovimiento estadoMovimiento) {
+        ejbEstadoMovimientoFacade.edit(estadoMovimiento);
     }
     
     //eliminar entidades
@@ -47,14 +47,14 @@ public class ClienteRest {
     @Consumes({MediaType.APPLICATION_JSON, MediaType.TEXT_PLAIN})    
     @Path("/{id}")
     public void remove(@PathParam("id")long id){
-        ejbClienteFacade.remove( ejbClienteFacade.find(id) );
+        ejbEstadoMovimientoFacade.remove( ejbEstadoMovimientoFacade.find(id) );
     }
     //obtener una entidad por id
     @GET
     @Path("/{id}")
     @Produces({MediaType.APPLICATION_JSON})
-    public Cliente findById(@PathParam("id")long id){
-        return ejbClienteFacade.find(id);
+    public EstadoMovimiento findById(@PathParam("id")long id){
+        return ejbEstadoMovimientoFacade.find(id);
     }
     
     

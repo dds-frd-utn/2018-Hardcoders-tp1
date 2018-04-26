@@ -37,7 +37,7 @@ public class TipoMovimiento implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
@@ -47,20 +47,20 @@ public class TipoMovimiento implements Serializable {
     public TipoMovimiento() {
     }
 
-    public TipoMovimiento(Integer id) {
+    public TipoMovimiento(Long id) {
         this.id = id;
     }
 
-    public TipoMovimiento(Integer id, String nombre) {
+    public TipoMovimiento(Long id, String nombre) {
         this.id = id;
         this.nombre = nombre;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

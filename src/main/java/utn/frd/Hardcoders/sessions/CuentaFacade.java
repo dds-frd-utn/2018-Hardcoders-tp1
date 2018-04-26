@@ -5,10 +5,14 @@
  */
 package utn.frd.Hardcoders.sessions;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaBuilder;
 import utn.frd.Hardcoders.entities.Cuenta;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 /**
  *
@@ -29,4 +33,12 @@ public class CuentaFacade extends AbstractFacade<Cuenta> {
         super(Cuenta.class);
     }
     
+    public List<Cuenta> findByClientId(Long id) {
+      CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
+      CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
+      Root<Cuenta> cuenta = cq.from(Cuenta.class);
+      cq.select(cuenta).where(cb.equal(cuenta.get("idCliente"), id));
+      return getEntityManager().createQuery(cq).getResultList();
+    }
+        
 }

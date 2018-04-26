@@ -19,6 +19,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -44,7 +45,7 @@ public class Movimiento implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
     @Basic(optional = false)
     @NotNull
     @Column(name = "creado")
@@ -69,15 +70,26 @@ public class Movimiento implements Serializable {
     @NotNull
     @Column(name = "id_cuenta")
     private int idCuenta;
+    @Size(max = 100)
+    @Column(name = "descripcion")
+    private String descripcion;
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 
     public Movimiento() {
     }
 
-    public Movimiento(Integer id) {
+    public Movimiento(Long id) {
         this.id = id;
     }
 
-    public Movimiento(Integer id, Date creado, int tipo, int estado, double importe, int idCuenta) {
+    public Movimiento(Long id, Date creado, int tipo, int estado, double importe, int idCuenta) {
         this.id = id;
         this.creado = creado;
         this.tipo = tipo;
@@ -86,11 +98,11 @@ public class Movimiento implements Serializable {
         this.idCuenta = idCuenta;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

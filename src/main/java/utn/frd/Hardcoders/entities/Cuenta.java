@@ -41,7 +41,7 @@ public class Cuenta implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
     @Basic(optional = false)
     @NotNull
     @Column(name = "numero")
@@ -55,26 +55,29 @@ public class Cuenta implements Serializable {
     @NotNull
     @Column(name = "id_cliente")
     private int idCliente;
+    @Column(name = "saldo")
+    private double saldo;
 
+ 
     public Cuenta() {
     }
 
-    public Cuenta(Integer id) {
+    public Cuenta(Long id) {
         this.id = id;
     }
 
-    public Cuenta(Integer id, long numero, Date apertura, int idCliente) {
+    public Cuenta(Long id, long numero, Date apertura, int idCliente) {
         this.id = id;
         this.numero = numero;
         this.apertura = apertura;
         this.idCliente = idCliente;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -101,6 +104,15 @@ public class Cuenta implements Serializable {
     public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
     }
+    
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+
 
     @Override
     public int hashCode() {

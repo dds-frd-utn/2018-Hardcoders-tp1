@@ -43,7 +43,7 @@ public class Contacto implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
@@ -67,11 +67,11 @@ public class Contacto implements Serializable {
     public Contacto() {
     }
 
-    public Contacto(Integer id) {
+    public Contacto(Long id) {
         this.id = id;
     }
 
-    public Contacto(Integer id, String tipo, String valor, Date actualizado, int idCliente) {
+    public Contacto(Long id, String tipo, String valor, Date actualizado, int idCliente) {
         this.id = id;
         this.tipo = tipo;
         this.valor = valor;
@@ -79,11 +79,11 @@ public class Contacto implements Serializable {
         this.idCliente = idCliente;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
