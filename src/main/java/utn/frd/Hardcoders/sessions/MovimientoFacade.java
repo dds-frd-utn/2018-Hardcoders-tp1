@@ -67,7 +67,7 @@ public class MovimientoFacade extends AbstractFacade<Movimiento> {
                 .where(
                         cb.and(
                                 cb.equal(movimiento.get("idCuenta"), idCuenta), 
-                                cb.like(movimiento.get("descripcion").as(String.class), descripcion)));
+                                cb.like(movimiento.get("descripcion").as(String.class), "%" + descripcion + "%")));
         return getEntityManager().createQuery(cq).getResultList();
     }
 
@@ -99,7 +99,7 @@ public class MovimientoFacade extends AbstractFacade<Movimiento> {
             getEntityManager().createQuery(updMovs).executeUpdate();
 
             Cuenta instance = getEntityManager().find(Cuenta.class, idCuenta);
-            instance.setSaldo(result);
+            instance.setSaldo(instance.getSaldo() + result);
             getEntityManager().merge(instance);
 
         }

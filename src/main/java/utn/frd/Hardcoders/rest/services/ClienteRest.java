@@ -56,6 +56,14 @@ public class ClienteRest {
     public Cliente findById(@PathParam("id")long id){
         return ejbClienteFacade.find(id);
     }
+    //obtener una entidad por id
+    @GET
+    @Path("/byCuil/{cuil}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Cliente findByCUIL(@PathParam("cuil")long cuil){
+        return ejbClienteFacade.findByCUIL(cuil);
+    }
+
     
     
 }
